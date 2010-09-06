@@ -1,5 +1,5 @@
 # Simple AMQP Example
-I oput this together ti give a quick example of using amqp to send messages. To
+I put this together ti give a quick example of using amqp to send messages. To
 run this example, startup console.js and app.js and navigate to
 http://localhost:3000. Text entered in the input will be sent to the server via
 websocket and published on an exchange with the routing key key.a.b, which
