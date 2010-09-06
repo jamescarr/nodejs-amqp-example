@@ -1,0 +1,19 @@
+{
+  "name": "amqp-example",
+  "description": "An example of using amqp in nodejs... with socket.IO goodness!",
+  "version": "0.0.1",
+  "contributors": [ 
+    { "name": "James Carr", "email": "james.r.carr@gmail.com" },
+  ],
+  "directories": { "lib": "./lib/" },
+  "engines": { "node": ">= 0.2.0" },
+  "dependencies":{
+    "express":"1.0.0rc",
+    "connect":"0.2.3",
+    "jade":"0.3.0",
+    "less":"1.0.21",
+    "oauth":"0.8.1",
+    "amqp":"0.0.1",
+    "socket.io":"0.5.3"
+  }
+}
