@@ -17,9 +17,9 @@ var connection = amqp.createConnection({ host: 'localhost' });
  
 var sys = require('sys')
 connection.addListener('ready', function(){
-  var exchange = connection.exchange('myExchange', {type:'direct', durable:true, autoDelete: false});
-  var queue = connection.queue('for-node')
-  queue.bind('java', 'testRoute')
+  var exchange = connection.exchange('some-exchange');
+  var queue = connection.queue('queueB')
+  queue.bind('some-exchange', 'key.b.a')
   
   app.listen(3000, function(){
     console.log('listening for connections on port 3000')
@@ -27,7 +27,7 @@ connection.addListener('ready', function(){
      
     socket.on('connection', function(client){
       client.on('message', function(msg){
-        exchange.publish("forJava", msg);
+        exchange.publish("key.a.b", msg);
       })
       client.on('disconnect', function(){
       })
