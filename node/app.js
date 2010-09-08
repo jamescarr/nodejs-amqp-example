@@ -2,6 +2,7 @@ require.paths.unshift(__dirname+"/lib/")
 var app = require('appserver').createServer()
 var io = require('socket.io')
 var amqp = require('amqp')
+var sys = require('sys')
 
 
 app.get('/', function(req, res){
@@ -15,7 +16,6 @@ app.get('/', function(req, res){
 
 var connection = amqp.createConnection({ host: 'localhost' });
  
-var sys = require('sys')
 connection.addListener('ready', function(){
   var exchange = connection.exchange('some-exchange');
   var queue = connection.queue('queueB')

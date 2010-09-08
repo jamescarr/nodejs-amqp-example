@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories{
+  mavenCentral()
+  mavenRepo urls: "http://maven.springframework.org/milestone"
+}
+
+dependencies{
+  testCompile 'junit:junit:4.7'
+  compile 'org.springframework:spring-core:3.0.3.RELEASE'
+  compile 'org.springframework.amqp:spring-amqp:1.0.0.M1'
+  compile 'com.rabbitmq:amqp-client:1.8.1'
+  compile 'org.springframework.amqp:spring-rabbit:1.0.0.M1'
+  compile 'org.springframework.amqp:spring-rabbit-admin:1.0.0.M1'
+  compile 'com.google.collections:google-collections:1.0'
+  runtime 'cglib:cglib-nodep:2.2'
+}
+
+
+task runProducer(dependsOn: build) <<{
+  ant.java(classname: 'org.springframework.amqp.helloworld.Producer', fork: false,
+    classpath: "${sourceSets.main.runtimeClasspath.asPath}")
+}
+
+task runConsumer(dependsOn: build) <<{
+  ant.java(classname: 'org.springframework.amqp.helloworld.Consumer', fork: false,
+    classpath: "${sourceSets.main.runtimeClasspath.asPath}")
+}
