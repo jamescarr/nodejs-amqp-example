@@ -19,11 +19,12 @@ dependencies{
 
 
 task runProducer(dependsOn: build) <<{
-  ant.java(classname: 'org.springframework.amqp.helloworld.Producer', fork: false,
+  ant.java(classname: 'org.jamescarr.amqp.example.RandomPriceRunner', fork: true,
     classpath: "${sourceSets.main.runtimeClasspath.asPath}")
+  
 }
 
 task runConsumer(dependsOn: build) <<{
-  ant.java(classname: 'org.springframework.amqp.helloworld.Consumer', fork: false,
+  ant.java(classname: 'org.jamescarr.amqp.example..StockProducer', fork:true ,
     classpath: "${sourceSets.main.runtimeClasspath.asPath}")
 }
